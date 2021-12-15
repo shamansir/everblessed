@@ -2379,7 +2379,7 @@ to be distributed under the MIT license. You are also implicitly verifying that
 all code is your original work. `</legalese>`
 
 
-## License
+## Original License
 
 Copyright (c) 2013-2015, Christopher Jeffrey. (MIT License)
 
