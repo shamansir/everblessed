@@ -1,3 +1,5 @@
-// reblessed
+/**
+ * Expose the library
+ */
 
-module.exports = require('./lib/blessed');
+module.exports = require('./lib/reblessed');
