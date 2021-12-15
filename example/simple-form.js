@@ -1,4 +1,4 @@
-var blessed = require('blessed')
+var blessed = require('reblessed')
   , screen = blessed.screen();
 
 var form = blessed.form({
