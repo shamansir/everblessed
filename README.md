@@ -35,7 +35,7 @@ The blessed API itself has gone on to inspire [termui][termui] for Go.
 ## Install
 
 ``` bash
-$ npm install blessed
+$ npm install reblessed
 ```
 
 ## Example
@@ -48,7 +48,7 @@ __NOTE__: It is recommend you use either `smartCSR` or `fastCSR` as a
 or when manipulating lines.
 
 ``` js
-var blessed = require('blessed');
+var blessed = require('reblessed');
 
 // Create a screen object.
 var screen = blessed.screen({
