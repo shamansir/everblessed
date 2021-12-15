@@ -9,7 +9,7 @@
 
 process.title = 'multiplex.js';
 
-var blessed = require('blessed')
+var blessed = require('reblessed')
   , screen;
 
 screen = blessed.screen({
