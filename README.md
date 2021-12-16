@@ -2,6 +2,11 @@
 
 Because the original [blessed repo](https://github.com/chjj/blessed) is kinda _dead_, (last commit in **2016**) i decided to revive it.
 
+![newtrodit-stars](https://img.shields.io/github/stars/kenan238/reblessed)
+![newtrodit-forks](https://img.shields.io/github/forks/kenan238/reblessed)
+![newtrodit-stars](https://img.shields.io/github/license/kenan238/reblessed)
+![newtrodit-issues](https://img.shields.io/github/issues/kenan238/reblessed)
+
 <p align="center">
   <img src="https://github.com/kenan238/reblessed/blob/master/reblessed-logo.png" alt="Logo"/>
 </p>
