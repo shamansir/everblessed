@@ -8,7 +8,7 @@ Because the original [blessed repo](https://github.com/chjj/blessed) is kinda _d
 ![reblessed-issues](https://img.shields.io/github/issues/kenan238/reblessed)
 
 <p align="center">
-  <img src="https://github.com/kenan238/reblessed/blob/master/reblessed-logo.png" alt="Logo"/>
+  <img src="https://github.com/kenan238/reblessed/blob/master/reblessed-logo.png" alt="Logo" width="300" height="300"/>
 </p>
 
 A curses-like library with a high level terminal interface API for node.js.
