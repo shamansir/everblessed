@@ -1,5 +1,5 @@
 /**
- * Example Program for Blessed
+ * Example Program for Reblessed
  * Copyright (c) 2013, Christopher Jeffrey (MIT License).
  * https://github.com/chjj/blessed
  */
