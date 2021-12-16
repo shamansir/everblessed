@@ -3,7 +3,7 @@
 Because the original [blessed repo](https://github.com/chjj/blessed) is kinda _dead_, (last commit in **2016**) i decided to revive it.
 
 <p align="center">
-  <img src="https://github.com/kenan238/reblessed/reblessed-logo.png" alt="Logo"/>
+  <img src="https://github.com/kenan238/reblessed/blob/master/reblessed-logo.png" alt="Logo"/>
 </p>
 
 A curses-like library with a high level terminal interface API for node.js.
