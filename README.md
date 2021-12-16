@@ -2,6 +2,10 @@
 
 Because the original [blessed repo](https://github.com/chjj/blessed) is kinda _dead_, (last commit in **2016**) i decided to revive it.
 
+<p align="center">
+  <img src="https://github.com/kenan238/reblessed/reblessed-logo.png" alt="Logo"/>
+</p>
+
 A curses-like library with a high level terminal interface API for node.js.
 
 ![reblessed](https://raw.githubusercontent.com/chjj/blessed/master/img/v0.1.0-3.gif)
