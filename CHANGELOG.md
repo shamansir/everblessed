@@ -4,4 +4,4 @@
 
 ## New:
 
-- __`Bugfix`__ - Please see issue #3
+- __`Bugfix`__ - see issue #3
