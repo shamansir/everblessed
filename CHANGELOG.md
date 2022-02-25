@@ -1,4 +1,4 @@
-# Reblessed v0.1.83 - terminal goodies for node.js
+# Reblessed v0.1.84 - terminal goodies for node.js
 
 ![reblessed](https://raw.githubusercontent.com/kenan238/reblessed/master/reblessed-logo.png)
 
