@@ -2,6 +2,7 @@
 
 Because the original [blessed repo](https://github.com/chjj/blessed) is kinda _dead_, (last commit in **2016**) i decided to revive it.
 
+![reblessed-npm](https://img.shields.io/static/v1?label=npm&message=reblessed%20on%20npm&color=orange&link=https://www.npmjs.com/package/reblessed)
 ![reblessed-stars](https://img.shields.io/github/stars/kenan238/reblessed)
 ![reblessed-forks](https://img.shields.io/github/forks/kenan238/reblessed)
 ![reblessed-stars](https://img.shields.io/github/license/kenan238/reblessed)
@@ -15,8 +16,7 @@ A curses-like library with a high level terminal interface API for node.js.
 
 ![reblessed](https://raw.githubusercontent.com/chjj/blessed/master/img/v0.1.0-3.gif)
 
-Blessed is over 16,000 lines of code and terminal goodness. It's completely
-implemented in javascript, and its goal consists of two things:
+The library's goal consists of two things:
 
 1. Reimplement ncurses entirely by parsing and compiling terminfo and termcap,
 and exposing a `Program` object which can output escape sequences compatible
@@ -24,28 +24,35 @@ with _any_ terminal.
 
 2. Implement a widget API which is heavily optimized for terminals.
 
-The blessed renderer makes use of CSR (change-scroll-region), and BCE
+The reblessed renderer makes use of CSR (change-scroll-region), and BCE
 (back-color-erase). It draws the screen using the painter's algorithm and is
 sped up with smart cursor movements and a screen damage buffer. This means
-rendering of your application will be extremely efficient: blessed only draws
+rendering of your application will be extremely efficient: reblessed only draws
 the changes (damage) to the screen.
 
-Blessed is arguably as accurate as ncurses, but even more optimized in some
+Reblessed is arguably as accurate as ncurses, but even more optimized in some
 ways. The widget library gives you an API which is reminiscent of the DOM.
-Anyone is able to make an awesome terminal application with blessed. There are
+Anyone is able to make an awesome terminal application with reblessed. There are
 terminal widget libraries for other platforms (primarily [python][urwid] and
-[perl][curses-ui]), but blessed is possibly the most DOM-like (dare I say the
+[perl][curses-ui]), but reblessed is possibly the most DOM-like (dare I say the
 most user-friendly?).
 
-Blessed has been used to implement other popular libraries and programs.
+Reblessed has been used to implement other popular libraries and programs.
 Examples include: the [slap text editor][slap] and [blessed-contrib][contrib].
 The blessed API itself has gone on to inspire [termui][termui] for Go.
 
 ## Install
 
+### Latest release
 ``` bash
 $ npm install reblessed
 ```
+### Latest source code
+``` bash
+$ git remote add origin git@github.com:kenan238/reblessed.git
+$ git pull origin master
+```
+
 
 ## Example
 
@@ -53,7 +60,7 @@ This will render a box with line borders containing the text `'Hello world!'`,
 perfectly centered horizontally and vertically.
 
 __NOTE__: It is recommend you use either `smartCSR` or `fastCSR` as a
-`blessed.screen` option. This will enable CSR when scrolling text in elements
+`reblessed.screen` option. This will enable CSR when scrolling text in elements
 or when manipulating lines.
 
 ``` js
@@ -140,6 +147,9 @@ If you contribute code to this project, you are implicitly allowing your code
 to be distributed under the MIT license. You are also implicitly verifying that
 all code is your original work. `</legalese>`
 
+
+## New license
+See `LICENSE.md`
 
 ## Original License
 
