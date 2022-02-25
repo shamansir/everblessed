@@ -5,4 +5,5 @@
 ## New:
 
 - __`Bugfix`__ - see issue #3
--__New `oninput` event__ - New `oninput` event for form-based elements.
+-__New `input` event__ - New `input` event for form-based elements.
+-__Change__ - Renamed 'oninput' event to 'input'.
