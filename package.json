@@ -2,7 +2,7 @@
   "name": "reblessed",
   "description": "A high-level terminal interface library for node.js.",
   "author": "Christopher Jeffrey / kenan238",
-  "version": "0.1.83",
+  "version": "0.1.84",
   "license": "MIT",
   "main": "./lib/reblessed.js",
   "bin": "./bin/tput.js",
