@@ -16,26 +16,13 @@ A curses-like library with a high level terminal interface API for node.js.
 
 ![reblessed](https://raw.githubusercontent.com/chjj/blessed/master/img/v0.1.0-3.gif)
 
-The library's goal consists of two things:
+The library's official author "chjj" forgot about blessed the original
+library, the library has been dead for several years (from 2016!) and
+all forks also died, so I took matters on my own hands and forked the project.
 
-1. Reimplement ncurses entirely by parsing and compiling terminfo and termcap,
-and exposing a `Program` object which can output escape sequences compatible
-with _any_ terminal.
-
-2. Implement a widget API which is heavily optimized for terminals.
-
-The reblessed renderer makes use of CSR (change-scroll-region), and BCE
-(back-color-erase). It draws the screen using the painter's algorithm and is
-sped up with smart cursor movements and a screen damage buffer. This means
-rendering of your application will be extremely efficient: reblessed only draws
-the changes (damage) to the screen.
-
-Reblessed is arguably as accurate as ncurses, but even more optimized in some
-ways. The widget library gives you an API which is reminiscent of the DOM.
-Anyone is able to make an awesome terminal application with reblessed. There are
-terminal widget libraries for other platforms (primarily [python][urwid] and
-[perl][curses-ui]), but reblessed is possibly the most DOM-like (dare I say the
-most user-friendly?).
+Blessed is a cool project and so I revived this masterpiece from the dead
+under the name "Re-Blessed", because I could find no other `TUI` library that
+had exactly what a `TUI` application needed!
 
 ## Install
 
