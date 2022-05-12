@@ -37,10 +37,6 @@ terminal widget libraries for other platforms (primarily [python][urwid] and
 [perl][curses-ui]), but reblessed is possibly the most DOM-like (dare I say the
 most user-friendly?).
 
-Reblessed has been used to implement other popular libraries and programs.
-Examples include: the [slap text editor][slap] and [blessed-contrib][contrib].
-The blessed API itself has gone on to inspire [termui][termui] for Go.
-
 ## Install
 
 ### Latest release
