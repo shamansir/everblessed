@@ -1,6 +1,5 @@
 {
-  "include": ["src/lib/**/*.js", "src/vendor/**/*.js"],
-  "exclude": ["dist"],
+  "include": ["src/**/*.js"],
   "compilerOptions": {
     "rootDir": "src",
     // Tells TypeScript to read JS files, as
