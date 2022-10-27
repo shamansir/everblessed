@@ -9,13 +9,32 @@
   "preferGlobal": false,
   "repository": "git://github.com/kenan238/reblessed.git",
   "homepage": "https://github.com/kenan238/reblessed.git",
-  "bugs": { "url": "https//github.com/kenan238/reblessed.git" },
-  "keywords": ["curses", "tui", "tput", "terminfo", "termcap"],
-  "tags": ["curses", "tui", "tput", "terminfo", "termcap"],
+  "bugs": {
+    "url": "https//github.com/kenan238/reblessed.git"
+  },
+  "keywords": [
+    "curses",
+    "tui",
+    "tput",
+    "terminfo",
+    "termcap"
+  ],
+  "tags": [
+    "curses",
+    "tui",
+    "tput",
+    "terminfo",
+    "termcap"
+  ],
   "engines": {
     "node": ">= 8.10"
   },
   "browserify": {
-    "transform": ["./browser/transform.js"]
+    "transform": [
+      "./browser/transform.js"
+    ]
+  },
+  "dependencies": {
+    "typescript": "^4.8.4"
   }
 }
