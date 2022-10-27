@@ -2,4 +2,4 @@
  * Expose the library
  */
 
-module.exports = require('./lib/reblessed');
+module.exports = require("./dist/lib/reblessed");
