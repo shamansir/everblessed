@@ -2,5 +2,7 @@
 test/
 img/
 node_modules/
+example/
+src/
 .jshintrc
 .jscsrc
