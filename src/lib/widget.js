@@ -40,7 +40,8 @@ widget.classes = [
   'ANSIImage',
   'OverlayImage',
   'Video',
-  'Layout'
+  'Layout',
+  'StreamBox'
 ];
 
 for (var name of widget.classes) {
