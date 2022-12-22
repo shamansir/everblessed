@@ -25,7 +25,7 @@ function StreamBox(options) {
 
 StreamBox.prototype.__proto__ = Element.prototype;
 
-StreamBox.prototype.type = 'box';
+StreamBox.prototype.type = 'streambox';
 
 /**
  * Expose
