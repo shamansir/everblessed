@@ -115,7 +115,7 @@ Tput.prototype._useXtermCap = function() {
 };
 
 Tput.prototype._useXtermInfo = function() {
-  return this.injectTerminfo(__dirname + '/../usr/xterm');
+  return this.injectTerminfo(path.join(__dirname, '/../') + '/../usr/xterm');
 };
 
 Tput.prototype._useInternalInfo = function(name) {

@@ -36,8 +36,6 @@ function Screen(options) {
     return new Screen(options);
   }
 
-  Screen.bind(this);
-
   options = options || {};
   if (options.rsety && options.listen) {
     options = { program: options };
@@ -180,6 +178,7 @@ function Screen(options) {
       self._listenMouse();
     }
   });
+  Screen.bind(this);
 
   this.setMaxListeners(Infinity);
 
