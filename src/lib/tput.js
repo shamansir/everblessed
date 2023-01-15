@@ -120,12 +120,12 @@ Tput.prototype._useXtermInfo = function() {
 
 Tput.prototype._useInternalInfo = function(name) {
   name = path.basename(name);
-  return this.injectTerminfo(__dirname + '/../usr/' + name);
+  return this.injectTerminfo(path.join(__dirname, '/../') + '/../usr/' + name);
 };
 
 Tput.prototype._useInternalCap = function(name) {
   name = path.basename(name);
-  return this.injectTermcap(__dirname + '/../usr/' + name + '.termcap');
+  return this.injectTermcap(path.join(__dirname, '/../') + '/../usr/' + name + '.termcap');
 };
 
 /**
