@@ -88,7 +88,7 @@ Tput.prototype.setup = function() {
     // If there was an error, fallback
     // to an internally stored terminfo/cap.
     if (this.debug) throw e;
-    this.error = new Error('Terminfo not found.');
+    this.error = new Error('Terminfo not found: ' + e);
     this._useXtermInfo();
   }
 };
