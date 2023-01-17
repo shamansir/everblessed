@@ -182,7 +182,8 @@ ListTable.prototype.select = function(i) {
   if (i <= this.childBase) {
     this.setScroll(this.childBase - 1);
   }
-  return this._select(i);
+  this._select(i);
+  this.scrollTo(this.selected - 1);
 };
 
 ListTable.prototype.render = function() {
