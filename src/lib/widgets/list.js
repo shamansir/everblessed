@@ -301,7 +301,7 @@ List.prototype.appendItem = function(content) {
   content = typeof content === 'string' ? content : content.getContent();
 
   var item = this.createItem(content);
-  item.position.top = this.items.length;
+  item.position.top = this.items.map(i => i.height).reduce((x, y) => x + y, 0);
   if (!this.screen.autoPadding) {
     item.position.top = this.itop + this.items.length;
   }
