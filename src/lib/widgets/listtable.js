@@ -183,6 +183,7 @@ ListTable.prototype.select = function(i) {
     this.setScroll(this.childBase - 1);
   }
   this._select(i);
+  // header offset
   this.scrollTo(this.selected - 1);
 };
 

@@ -79,6 +79,10 @@ function List(options) {
     this.style.item.focus = this.options.itemFocusEffects;
   }
 
+  if (this.options.itemHeight) {
+    this.style.item.height = 2;
+  }
+
   this.interactive = options.interactive !== false;
 
   this.mouse = options.mouse || false;
@@ -237,7 +241,7 @@ List.prototype.createItem = function(content) {
     left: 0,
     right: (this.scrollbar ? 1 : 0),
     tags: this.parseTags,
-    height: 1,
+    height: this.style.item.height || 1,
     hoverEffects: this.mouse ? this.style.item.hover : null,
     focusEffects: this.mouse ? this.style.item.focus : null,
     autoFocus: false
