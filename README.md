@@ -8,10 +8,6 @@ Because the original [blessed repo](https://github.com/chjj/blessed) is kinda _d
 ![reblessed-stars](https://img.shields.io/github/license/kenan238/reblessed)
 ![reblessed-issues](https://img.shields.io/github/issues/kenan238/reblessed)
 
-<p align="center">
-  <img src="https://github.com/kenan238/reblessed/blob/master/reblessed-logo.png" alt="Logo" width="300" height="300"/>
-</p>
-
 A curses-like library with a high level terminal interface API for node.js.
 
 ![reblessed](https://raw.githubusercontent.com/chjj/blessed/master/img/v0.1.0-3.gif)
