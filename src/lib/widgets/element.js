@@ -2045,28 +2045,29 @@ Element.prototype.render = function() {
       }
 
       if (this.screen.fullUnicode && content[ci - 1]) {
-        var point = unicode.codePointAt(content, ci - 1);
-        // Handle combining chars:
-        // Make sure they get in the same cell and are counted as 0.
-        if (unicode.combining[point]) {
-          if (point > 0x00ffff) {
-            ch = content[ci - 1] + content[ci];
-            ci++;
-          }
-          if (x - 1 >= xi) {
-            lines[y][x - 1][1] += ch;
-          } else if (y - 1 >= yi) {
-            lines[y - 1][xl - 1][1] += ch;
-          }
-          x--;
-          continue;
-        }
-        // Handle surrogate pairs:
-        // Make sure we put surrogate pair chars in one cell.
-        if (point > 0x00ffff) {
-          ch = content[ci - 1] + content[ci];
-          ci++;
-        }
+        // NOTE(kenan238): This actually breaks it further! Damn...
+        // var point = unicode.codePointAt(content, ci - 1);
+        // // Handle combining chars:
+        // // Make sure they get in the same cell and are counted as 0.
+        // if (unicode.combining[point]) {
+        //   if (point > 0x00ffff) {
+        //     ch = content[ci - 1] + content[ci];
+        //     ci++;
+        //   }
+        //   if (x - 1 >= xi) {
+        //     lines[y][x - 1][1] += ch;
+        //   } else if (y - 1 >= yi) {
+        //     lines[y - 1][xl - 1][1] += ch;
+        //   }
+        //   x--;
+        //   continue;
+        // }
+        // // Handle surrogate pairs:
+        // // Make sure we put surrogate pair chars in one cell.
+        // if (point > 0x00ffff) {
+        //   ch = content[ci - 1] + content[ci];
+        //   ci++;
+        // }
       }
 
       if (this._noFill) continue;
