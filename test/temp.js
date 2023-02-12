@@ -8,7 +8,7 @@ screen = blessed.screen({
   log: './logs/emojis'
 });
 
-var box = blessed.box({
+var box = blessed.log({
   parent: screen,
   style: {
     bg: 'blue'
@@ -18,9 +18,12 @@ var box = blessed.box({
   top: 'center',
   left: 'center',
   tags: true,
-  content: '😎🤗🥶🤬🐺🦁🦃🐓👪🐢✨'
+  keys: true
 });
 
+for (let i = 0; i < 30; i++) {
+  box.log(i + "\n");
+}
 
 screen.key(['escape', 'q', 'C-c'], function(ch, key) {
   return process.exit(0);
