@@ -284,7 +284,8 @@ ScrollableBox.prototype.scroll = function(offset, always) {
 
   max = this._clines.length - (this.height - this.iheight);
   if (max < 0) max = 0;
-  emax = this._scrollBottom() - (this.height - this.iheight);
+  // XXX adding - (this.height - this.iheight) breaks it
+  emax = this._scrollBottom();
   if (emax < 0) emax = 0;
 
   this.childBase = Math.min(this.childBase, Math.max(emax, max));
