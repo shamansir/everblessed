@@ -156,11 +156,15 @@ Form.prototype.previous = function() {
 Form.prototype.focusNext = function() {
   var next = this.next();
   if (next) next.focus();
+  let pos = next._getCoords(false, true);
+  this.scrollTo(pos.yi);
 };
 
 Form.prototype.focusPrevious = function() {
   var previous = this.previous();
   if (previous) previous.focus();
+  let pos = previous._getCoords(false, true);
+  this.scrollTo(pos.yi);
 };
 
 Form.prototype.resetSelected = function() {
