@@ -171,8 +171,8 @@ Form.prototype.focusNext = function() {
     to-do: run check on padding to dynamically allocate the
     value.
   */
-  let return_val = 1
-  this.scrollTo(pos.yi - return_val);
+  let returnVal = 1
+  this.scrollTo(pos.yi - returnVal);
 };
 
 Form.prototype.focusPrevious = function() {
