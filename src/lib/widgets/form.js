@@ -157,7 +157,22 @@ Form.prototype.focusNext = function() {
   var next = this.next();
   if (next) next.focus();
   let pos = next._getCoords(false, true);
-  this.scrollTo(pos.yi);
+  /*
+    if the return val is 1 it will move to the first position
+    of the button / element in the form. however, this does not
+    take into account external factors such as padding.
+    
+    this is probably due the basis that the first position
+    is counted as the first button that is being scrolled to.
+
+    if the padding of the form = top: 1, the return value 
+    should be 2.
+
+    to-do: run check on padding to dynamically allocate the
+    value.
+  */
+  let return_val = 1
+  this.scrollTo(pos.yi - return_val);
 };
 
 Form.prototype.focusPrevious = function() {
