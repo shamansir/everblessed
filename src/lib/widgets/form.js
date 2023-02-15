@@ -156,6 +156,7 @@ Form.prototype.previous = function() {
 Form.prototype.focusNext = function() {
   var next = this.next();
   if (next) next.focus();
+  if (!this.scrollable) return;
   let pos = next._getCoords(false, true);
   this.scrollTo(pos.yi);
 };
@@ -163,6 +164,7 @@ Form.prototype.focusNext = function() {
 Form.prototype.focusPrevious = function() {
   var previous = this.previous();
   if (previous) previous.focus();
+  if (!this.scrollable) return;
   let pos = previous._getCoords(false, true);
   this.scrollTo(pos.yi);
 };
