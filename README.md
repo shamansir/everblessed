@@ -1,5 +1,4 @@
 # reblessed
-## My country's going bad, if I stop making commits, consider me dead.
 #### If you'd like to request a feature, make a new issue.
 Because the original [blessed repo](https://github.com/chjj/blessed) is kinda _dead_, (last commit in **2016**) i decided to revive it.
 
