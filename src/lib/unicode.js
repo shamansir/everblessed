@@ -397,20 +397,20 @@ exports.strWidth = function(str) {
   return width;
 };
 
-// exports.getByteLength = function(str) {
-//   str = String(str); // make sure its a string
-//   var byteLen = 0;
-//   for (let i = 0; i < str.length; i++) {
-//     let c = str.charCodeAt(i);
-//     byteLen += c < (1 << 7) ? 1 :
-//               c < (1 << 11) ? 2 :
-//               c < (1 << 16) ? 3 :
-//               c < (1 << 21) ? 4 :
-//               c < (1 << 26) ? 5 :
-//               c < (1 << 31) ? 6 : Number.NaN;
-//   }
-//   return byteLen;
-// };
+exports.getByteLength = function(str) {
+  str = String(str); // make sure its a string
+  var byteLen = 0;
+  for (let i = 0; i < str.length; i++) {
+    let c = str.charCodeAt(i);
+    byteLen += c < (1 << 7) ? 1 :
+              c < (1 << 11) ? 2 :
+              c < (1 << 16) ? 3 :
+              c < (1 << 21) ? 4 :
+              c < (1 << 26) ? 5 :
+              c < (1 << 31) ? 6 : Number.NaN;
+  }
+  return byteLen;
+};
 
 exports.isSurrogate = function(str, i) {
   var point = typeof str !== 'number'

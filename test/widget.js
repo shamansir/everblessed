@@ -1,4 +1,4 @@
-var blessed = require('../')
+var blessed = require('../src/lib/reblessed')
   , screen;
 
 screen = blessed.screen({
@@ -40,7 +40,7 @@ screen.append(blessed.text({
   left: 2,
   width: '100%',
   //bg: 'blue',
-  content: '{green-fg}Welcome{/green-fg} to my {red-fg,ul}program{/red-fg,ul}',
+  content: '{green-fg}Welcome{/green-fg} to my {red-fg,ul}program{/red-fg,ul} 😀😀',
   style: {
     bg: '#0000ff'
   },
