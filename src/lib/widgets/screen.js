@@ -1289,7 +1289,7 @@ Screen.prototype.draw = function(start, end) {
       if (this.fullUnicode) {
         // If this is a surrogate pair double-width char, we can ignore it
         // because parseContent already counted it as length=2.
-        let normalLength = ((line[x][1].length) - 1);
+        let normalLength = (unicode.charWidth(line[x][1].length));
         if (normalLength >= 2) {
           // NOTE: At cols=44, the bug that is avoided
           // by the angles check occurs in widget-unicode:

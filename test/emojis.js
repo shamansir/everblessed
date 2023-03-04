@@ -17,7 +17,7 @@ var box = blessed.box({
   top: 'center',
   left: 'center',
   tags: true,
-  content: 'asdasd😀😀'
+  content: 'asdasd😀'
 });
 
 
