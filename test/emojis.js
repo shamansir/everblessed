@@ -5,7 +5,6 @@ screen = blessed.screen({
   dump: __dirname + '/logs/textarea.log',
   fullUnicode: true,
   warnings: true,
-  log: './logs/emojis'
 });
 
 var box = blessed.box({
@@ -18,7 +17,7 @@ var box = blessed.box({
   top: 'center',
   left: 'center',
   tags: true,
-  content: '😎🤗🥶🤬🐺🦁🦃🐓👪🐢✨'
+  content: 'asdasd😀😀'
 });
 
 

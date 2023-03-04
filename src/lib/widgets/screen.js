@@ -1289,7 +1289,8 @@ Screen.prototype.draw = function(start, end) {
       if (this.fullUnicode) {
         // If this is a surrogate pair double-width char, we can ignore it
         // because parseContent already counted it as length=2.
-        if (unicode.charWidth(line[x][1]) === 2) {
+        let normalLength = ((line[x][1].length) - 1);
+        if (normalLength >= 2) {
           // NOTE: At cols=44, the bug that is avoided
           // by the angles check occurs in widget-unicode:
           // Might also need: `line[x + 1][0] !== line[x][0]`
@@ -1306,7 +1307,8 @@ Screen.prototype.draw = function(start, end) {
             o[x][1] = '\0';
             // Eat the next character by moving forward and marking as a
             // space (which it is).
-            o[++x][1] = '\0';
+            for (let cn = 0; cn < normalLength - 1; cn++)
+              o[++x][1] = '\0';
           }
         }
       }
