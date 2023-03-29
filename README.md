@@ -28,8 +28,7 @@ $ npm install reblessed
 ```
 ### Latest source code
 ``` bash
-$ git remote add origin git@github.com:kenan238/reblessed.git
-$ git pull origin master
+$ git clone git@github.com:kenan238/reblessed.git
 ```
 
 
