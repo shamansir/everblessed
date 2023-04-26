@@ -2,8 +2,6 @@
 
 #### If you'd like to request a feature, make a new issue
 
-Because the original [blessed repo](https://github.com/chjj/blessed) is kinda dead, (last commit in **2016**) i decided to revive it.
-
 ![reblessed-npm](https://img.shields.io/static/v1?label=npm&message=reblessed%20on%20npm&color=orange&link=https://www.npmjs.com/package/reblessed)
 ![reblessed-stars](https://img.shields.io/github/stars/kenan238/reblessed)
 ![reblessed-forks](https://img.shields.io/github/forks/kenan238/reblessed)
@@ -12,15 +10,12 @@ Because the original [blessed repo](https://github.com/chjj/blessed) is kinda de
 
 A curses-like library with a high level terminal interface API for node.js.
 
-![reblessed](https://raw.githubusercontent.com/chjj/reblessed/master/img/v0.1.0-3.gif)
+![reblessed](https://raw.githubusercontent.com/chjj/blessed/master/img/v0.1.0-3.gif)
 
-The library's official author "chjj" forgot about blessed the original
-library, the library has been dead for several years (from 2016!) and
-all forks also died, so I took matters on my own hands and forked the project.
+The library's official author, "chjj", seems to have abandoned the project, as the last commit was in 2016.
+All forks have also died, so I took matters into my own hands and forked the project.
 
-reblessed is a cool project and so I revived this masterpiece from the dead
-under the name "Re-Blessed", because I could find no other `TUI` library that
-had exactly what a `TUI` application needed!
+Blessed is a fantastic project, so I revived this masterpiece from the dead under the name "Re-Blessed", as I wasn’t able to find any other TUI libraries that had exactly what a TUI application needed!
 
 ## Install
 
