@@ -2,6 +2,6 @@
 
 ![reblessed](https://raw.githubusercontent.com/kenan238/reblessed/master/reblessed-logo.png)
 
-## New:
+## New
 
-- https://github.com/kenan238/reblessed/compare/v0.1.85...v0.2.00
+- <https://github.com/kenan238/reblessed/compare/v0.1.85...v0.2.00>
