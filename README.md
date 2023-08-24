@@ -41,17 +41,17 @@ perfectly centered horizontally and vertically.
 or when manipulating lines.
 
 ``` js
-var reblessed = require('reblessed');
+const reblessed = require('reblessed');
 
 // Create a screen object.
-var screen = reblessed.screen({
+const screen = reblessed.screen({
   smartCSR: true
 });
 
 screen.title = 'my window title';
 
 // Create a box perfectly centered horizontally and vertically.
-var box = reblessed.box({
+const box = reblessed.box({
     top: 'center',
     left: 'center',
     width: '50%',
@@ -77,7 +77,7 @@ var box = reblessed.box({
 screen.append(box);
 
 // Add a png icon to the box
-var icon = reblessed.image({
+const icon = reblessed.image({
     parent: box,
     top: 0,
     left: 0,
