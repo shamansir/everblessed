@@ -89,13 +89,13 @@ const icon = reblessed.image({
 });
 
 // If our box is clicked, change the content.
-box.on('click', function(data) {
+box.on('click', (data) => {
     box.setContent('{center}Some different {red-fg}content{/red-fg}.{/center}');
     screen.render();
 });
 
 // If box is focused, handle `enter`/`return` and give us some more content.
-box.key('enter', function(ch, key) {
+box.key('enter', (ch, key) => {
     box.setContent('{right}Even different {black-fg}content{/black-fg}.{/right}\n');
     box.setLine(1, 'bar');
     box.insertLine(1, 'foo');
@@ -103,7 +103,7 @@ box.key('enter', function(ch, key) {
 });
 
 // Quit on Escape, q, or Control-C.
-screen.key(['escape', 'q', 'C-c'], function(ch, key) {
+screen.key(['escape', 'q', 'C-c'], (ch, key) => {
     return process.exit(0);
 });
 
