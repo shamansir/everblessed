@@ -41,17 +41,17 @@ perfectly centered horizontally and vertically.
 or when manipulating lines.
 
 ``` js
-var reblessed = require('reblessed');
+const reblessed = require('reblessed');
 
 // Create a screen object.
-var screen = reblessed.screen({
+const screen = reblessed.screen({
   smartCSR: true
 });
 
 screen.title = 'my window title';
 
 // Create a box perfectly centered horizontally and vertically.
-var box = reblessed.box({
+const box = reblessed.box({
     top: 'center',
     left: 'center',
     width: '50%',
@@ -77,7 +77,7 @@ var box = reblessed.box({
 screen.append(box);
 
 // Add a png icon to the box
-var icon = reblessed.image({
+const icon = reblessed.image({
     parent: box,
     top: 0,
     left: 0,
@@ -89,13 +89,13 @@ var icon = reblessed.image({
 });
 
 // If our box is clicked, change the content.
-box.on('click', function(data) {
+box.on('click', (data) => {
     box.setContent('{center}Some different {red-fg}content{/red-fg}.{/center}');
     screen.render();
 });
 
 // If box is focused, handle `enter`/`return` and give us some more content.
-box.key('enter', function(ch, key) {
+box.key('enter', (ch, key) => {
     box.setContent('{right}Even different {black-fg}content{/black-fg}.{/right}\n');
     box.setLine(1, 'bar');
     box.insertLine(1, 'foo');
@@ -103,7 +103,7 @@ box.key('enter', function(ch, key) {
 });
 
 // Quit on Escape, q, or Control-C.
-screen.key(['escape', 'q', 'C-c'], function(ch, key) {
+screen.key(['escape', 'q', 'C-c'], (ch, key) => {
     return process.exit(0);
 });
 
