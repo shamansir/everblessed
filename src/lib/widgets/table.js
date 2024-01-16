@@ -30,6 +30,25 @@ function Table(options) {
   options.style.cell = options.style.cell || {};
   options.align = options.align || 'center';
 
+  // Options for table borders
+  options.tableBorder = options.tableBorder || {};
+  options.tableBorder.top = options.tableBorder.top !== undefined ? options.tableBorder.top : 'noBorderWithSpace';
+  options.tableBorder.bottom = options.tableBorder.bottom !== undefined ? options.tableBorder.bottom : 'noBorderWithSpace';
+  options.tableBorder.left = options.tableBorder.left !== undefined ? options.tableBorder.left : 'noBorderWithSpace';
+  options.tableBorder.right = options.tableBorder.right !== undefined ? options.tableBorder.right : 'noBorderWithSpace';
+  options.tableBorder.rows = options.tableBorder.rows !== undefined ? options.tableBorder.rows : 'all';
+  options.tableBorderFlags = {};
+  options.tableBorderFlags.topSpace = options.tableBorder.top === 'noBorderWithSpace' || options.tableBorder.top === 'border';
+  options.tableBorderFlags.topBorder = options.tableBorder.top === 'border';
+  options.tableBorderFlags.bottomSpace = options.tableBorder.bottom === 'noBorderWithSpace' || options.tableBorder.bottom === 'border';
+  options.tableBorderFlags.bottomBorder = options.tableBorder.bottom === 'border';
+  options.tableBorderFlags.leftSpace = options.tableBorder.left === 'noBorderWithSpace' || options.tableBorder.left === 'border';
+  options.tableBorderFlags.leftBorder = options.tableBorder.left === 'border';
+  options.tableBorderFlags.rightSpace = options.tableBorder.right === 'noBorderWithSpace' || options.tableBorder.right === 'border';
+  options.tableBorderFlags.rightBorder = options.tableBorder.right === 'border';
+  options.tableBorderFlags.rows = options.tableBorder.rows === 'all';
+  options.tableBorderFlags.rowHeader = options.tableBorder.rows === 'all' || options.tableBorder.rows === 'headerOnly';
+
   // Regular tables do not get custom height (this would
   // require extra padding). Maybe add in the future.
   delete options.height;
@@ -119,6 +138,7 @@ Table.prototype.setData = function(rows) {
   if (!this._maxes) return;
 
   this.rows.forEach(function(row, i) {
+    var isHeader = i === 0;
     var isFooter = i === self.rows.length - 1;
     row.forEach(function(cell, i) {
       var width = self._maxes[i];
@@ -157,7 +177,11 @@ Table.prototype.setData = function(rows) {
       text += cell;
     });
     if (!isFooter) {
-      text += '\n\n';
+      if (self.options.tableBorderFlags.rows || (self.options.tableBorderFlags.rowHeader && isHeader)) {
+        text += '\n\n';
+      } else {
+        text += '\n';
+      }
     }
   });
 
@@ -209,139 +233,209 @@ Table.prototype.render = function() {
 
   if (!this.border || this.options.noCellBorders) return coords;
 
-  // Draw border with correct angles.
-  ry = 0;
-  for (i = 0; i < self.rows.length + 1; i++) {
-    if (!lines[yi + ry]) break;
-    rx = 0;
-    self._maxes.forEach(function(max, i) {
-      rx += max;
-      if (i === 0) {
-        if (!lines[yi + ry][xi + 0]) return;
-        // left side
-        if (ry === 0) {
-          // top
-          lines[yi + ry][xi + 0][0] = battr;
-          // lines[yi + ry][xi + 0][1] = '\u250c'; // '┌'
-        } else if (ry / 2 === self.rows.length) {
-          // bottom
-          lines[yi + ry][xi + 0][0] = battr;
-          // lines[yi + ry][xi + 0][1] = '\u2514'; // '└'
-        } else {
-          // middle
-          lines[yi + ry][xi + 0][0] = battr;
-          lines[yi + ry][xi + 0][1] = '\u251c'; // '├'
-          // XXX If we alter iwidth and ileft for no borders - nothing should be written here
-          if (!self.border.left) {
-            lines[yi + ry][xi + 0][1] = '\u2500'; // '─'
-          }
-        }
-        lines[yi + ry].dirty = true;
-      } else if (i === self._maxes.length - 1) {
-        if (!lines[yi + ry][xi + rx + 1]) return;
-        // right side
-        if (ry === 0) {
-          // top
-          rx++;
-          lines[yi + ry][xi + rx][0] = battr;
-          // lines[yi + ry][xi + rx][1] = '\u2510'; // '┐'
-        } else if (ry / 2 === self.rows.length) {
-          // bottom
-          rx++;
-          lines[yi + ry][xi + rx][0] = battr;
-          // lines[yi + ry][xi + rx][1] = '\u2518'; // '┘'
-        } else {
-          // middle
-          rx++;
-          lines[yi + ry][xi + rx][0] = battr;
-          lines[yi + ry][xi + rx][1] = '\u2524'; // '┤'
-          // XXX If we alter iwidth and iright for no borders - nothing should be written here
-          if (!self.border.right) {
-            lines[yi + ry][xi + rx][1] = '\u2500'; // '─'
-          }
-        }
-        lines[yi + ry].dirty = true;
-        return;
-      }
-      if (!lines[yi + ry][xi + rx + 1]) return;
-      // center
-      if (ry === 0) {
-        // top
-        rx++;
-        lines[yi + ry][xi + rx][0] = battr;
-        lines[yi + ry][xi + rx][1] = '\u252c'; // '┬'
-        // XXX If we alter iheight and itop for no borders - nothing should be written here
-        if (!self.border.top) {
-          lines[yi + ry][xi + rx][1] = '\u2502'; // '│'
-        }
-      } else if (ry / 2 === self.rows.length) {
-        // bottom
-        rx++;
-        lines[yi + ry][xi + rx][0] = battr;
-        lines[yi + ry][xi + rx][1] = '\u2534'; // '┴'
-        // XXX If we alter iheight and ibottom for no borders - nothing should be written here
-        if (!self.border.bottom) {
-          lines[yi + ry][xi + rx][1] = '\u2502'; // '│'
-        }
-      } else {
-        // middle
-        if (self.options.fillCellBorders) {
-          var lbg = (ry <= 2 ? hattr : cattr) & 0x1ff;
-          rx++;
-          lines[yi + ry][xi + rx][0] = (battr & ~0x1ff) | lbg;
-        } else {
-          rx++;
-          lines[yi + ry][xi + rx][0] = battr;
-        }
-        lines[yi + ry][xi + rx][1] = '\u253c'; // '┼'
-        // rx++;
-      }
-      lines[yi + ry].dirty = true;
-    });
-    ry += 2;
+  // Align table border with content cells to account for top row space
+  if (self.options.tableBorderFlags.topSpace) {
+    ry = 0;
+  } else {
+    ry = 1;
   }
 
-  // Draw internal borders.
-  for (ry = 1; ry < self.rows.length * 2; ry++) {
+  // Draw all table border lines.
+  for (i = 0; i < self.rows.length + 1; i++) {
     if (!lines[yi + ry]) break;
-    rx = 0;
-    self._maxes.slice(0, -1).forEach(function(max) {
-      rx += max;
-      if (!lines[yi + ry][xi + rx + 1]) return;
-      if (ry % 2 !== 0) {
+    var isTopLine = i === 0;
+    var isHeaderLine = i === 1;
+    var isBottomLine = i === self.rows.length;
+    var isMiddleLine = !isTopLine && !isBottomLine;
+
+    // SECTION A: DRAW HORIZONTAL BORDER ROW BEFORE CURRENT CONTENT ROW
+    if (
+      // Condition for entering a horizontal border row
+      (isTopLine && self.options.tableBorderFlags.topSpace) ||
+      (isHeaderLine && (self.options.tableBorderFlags.rowHeader || self.options.tableBorderFlags.rows)) ||
+      (isMiddleLine && self.options.tableBorderFlags.rows) ||
+      (isBottomLine && self.options.tableBorderFlags.bottomSpace)
+    ) {
+      rx = 0;
+      self._maxes.forEach(function(max, i) {
+        rx += max;
+        var isFirstColumn = i === 0;
+        var isLastColumn = i === self._maxes.length - 1;
+
+        // 1. DRAW LEFT EDGE GRID INTERSECTION CHARACTER (only if on first column)
+        if (isFirstColumn) {
+          if (!lines[yi + ry][xi + 0]) return;
+          // left edge
+          if (isTopLine) {
+            // top-left corner
+            if (self.options.tableBorderFlags.topBorder || self.options.tableBorderFlags.leftBorder) {
+              lines[yi + ry][xi + 0][0] = battr;
+              if (self.options.tableBorderFlags.topBorder && self.options.tableBorderFlags.leftBorder) {
+                lines[yi + ry][xi + 0][1] = '\u250c'; // '┌'
+              } else if (self.options.tableBorderFlags.topBorder) {
+                lines[yi + ry][xi + 0][1] = '\u2500'; // '─'
+              } else if (self.options.tableBorderFlags.leftBorder) {
+                lines[yi + ry][xi + 0][1] = '\u2502'; // '│'
+              }
+            }
+          } else if (isBottomLine) {
+            // bottom-left corner
+            if (self.options.tableBorderFlags.bottomBorder || self.options.tableBorderFlags.leftBorder) {
+              lines[yi + ry][xi + 0][0] = battr;
+              if (self.options.tableBorderFlags.bottomBorder && self.options.tableBorderFlags.leftBorder) {
+                lines[yi + ry][xi + 0][1] = '\u2514'; // '└'
+              } else if (self.options.tableBorderFlags.bottomBorder && self.options.tableBorderFlags.leftSpace) {
+                lines[yi + ry][xi + 0][1] = '\u2500'; // '─'
+              } else if (self.options.tableBorderFlags.leftBorder) {
+                lines[yi + ry][xi + 0][1] = '\u2502'; // '│'
+              }
+            }
+          } else {
+            // middle-left edge
+            lines[yi + ry][xi + 0][0] = battr;
+            if (self.options.tableBorderFlags.leftBorder) {
+              lines[yi + ry][xi + 0][1] = '\u251c'; // '├'
+            } else {
+              if (self.options.tableBorderFlags.leftSpace) {
+                // XXX If we alter iwidth and ileft for no borders - nothing should be written here
+                lines[yi + ry][xi + 0][1] = '\u2500'; // '─'
+              }
+            }
+          }
+        }
+
+        // 2. DRAW MIDDLE OF ROW NON-INTERSECTION HORIZONTAL DIVIDER CHARACTERS
+        if ( !(isTopLine && !self.options.tableBorderFlags.topBorder) && !(isBottomLine && !self.options.tableBorderFlags.bottomBorder) ) {
+          for (var hx = rx - max + 1; hx <= rx; hx++) {
+            if (self.options.fillCellBorders) {
+              var lbg = (ry <= 2 ? hattr : cattr) & 0x1ff;
+              lines[yi + ry][xi + hx][0] = (battr & ~0x1ff) | lbg;
+            } else {
+              lines[yi + ry][xi + hx][0] = battr;
+            }
+            lines[yi + ry][xi + hx][1] = '\u2500'; // '─'
+          }
+        }
+
+        // 3A. **EITHER** DRAW RIGHT EDGE BORDER INTERSECTION CHARACTER (if on last column)
+        if (isLastColumn) {
+          // right edge
+          if (!lines[yi + ry][xi + rx + 1]) return;
+          rx++;
+          if (isTopLine) {
+            // top-right corner
+            lines[yi + ry][xi + rx][0] = battr;
+            if (self.options.tableBorderFlags.topBorder || self.options.tableBorderFlags.rightBorder) {
+              if (self.options.tableBorderFlags.topBorder && self.options.tableBorderFlags.rightBorder) {
+                lines[yi + ry][xi + rx][1] = '\u2510'; // '┐'
+              } else if (self.options.tableBorderFlags.topBorder) {
+                lines[yi + ry][xi + rx][1] = '\u2500'; // '─'
+              } else if (self.options.tableBorderFlags.rightBorder) {
+                lines[yi + ry][xi + rx][1] = '\u2502'; // '│'
+              }
+            }
+          } else if (isBottomLine) {
+            // bottom-right corner
+            lines[yi + ry][xi + rx][0] = battr;
+            if (self.options.tableBorderFlags.bottomBorder || self.options.tableBorderFlags.rightBorder) {
+              if (self.options.tableBorderFlags.bottomBorder && self.options.tableBorderFlags.rightBorder) {
+                lines[yi + ry][xi + rx][1] = '\u2518'; // '┘'
+              } else if (self.options.tableBorderFlags.bottomBorder && self.options.tableBorderFlags.rightSpace) {
+                lines[yi + ry][xi + rx][1] = '\u2500'; // '─'
+              } else if (self.options.tableBorderFlags.rightBorder) {
+                lines[yi + ry][xi + rx][1] = '\u2502'; // '│'
+              }
+            }
+          } else {
+            // middle-right edge
+            lines[yi + ry][xi + rx][0] = battr;
+            if (self.options.tableBorderFlags.rightBorder) {
+              lines[yi + ry][xi + rx][1] = '\u2524'; // '┤'
+            } else {
+              if (self.options.tableBorderFlags.rightSpace) {
+                // XXX If we alter iwidth and ileft for no borders - nothing should be written here
+                lines[yi + ry][xi + rx][1] = '\u2500'; // '─'
+              }
+            }
+          }
+
+        // 3B. **OR** DRAW MIDDLE COLUMN VERITICAL LINE INTERSECTION CHARACTER (if not on last column)
+        } else {
+          // middle column dividers
+          if (!lines[yi + ry][xi + rx + 1]) return;
+          rx++;
+          if (isTopLine) {
+            // top line
+            lines[yi + ry][xi + rx][0] = battr;
+            if (self.options.tableBorderFlags.topBorder) {
+              lines[yi + ry][xi + rx][1] = '\u252c'; // '┬'
+            } else {
+              // XXX If we alter iheight and itop for no borders - nothing should be written here
+              lines[yi + ry][xi + rx][1] = '\u2502'; // '│'
+            }
+          } else if (isBottomLine) {
+            // bottom line
+            lines[yi + ry][xi + rx][0] = battr;
+            if (self.options.tableBorderFlags.bottomBorder) {
+              lines[yi + ry][xi + rx][1] = '\u2534'; // '┴'
+            } else {
+              // XXX If we alter iheight and ibottom for no borders - nothing should be written here
+              lines[yi + ry][xi + rx][1] = '\u2502'; // '│'
+            }
+          } else {
+            // middle line
+            if (self.options.fillCellBorders) {
+              var lbg = (ry <= 2 ? hattr : cattr) & 0x1ff;
+              lines[yi + ry][xi + rx][0] = (battr & ~0x1ff) | lbg;
+            } else {
+              lines[yi + ry][xi + rx][0] = battr;
+            }
+            lines[yi + ry][xi + rx][1] = '\u253c'; // '┼'
+          }
+        }
+      });
+      lines[yi + ry].dirty = true;
+      ry++
+    }
+
+    // SECTION B: DRAW CURRENT CONTENT ROW BORDERS
+    if (!isBottomLine) {
+
+      // 4. DRAW CONTENT ROW LEFT NON-INTERSECTION VERTICAL LINE CHARACTER
+      if (!lines[yi + ry]) break;
+      if (self.options.tableBorderFlags.leftBorder) {
+        if (!lines[yi + ry][xi + 0]) return;
         if (self.options.fillCellBorders) {
           var lbg = (ry <= 2 ? hattr : cattr) & 0x1ff;
-          rx++;
-          lines[yi + ry][xi + rx][0] = (battr & ~0x1ff) | lbg;
+          lines[yi + ry][xi + 0][0] = (battr & ~0x1ff) | lbg;
         } else {
-          rx++;
-          lines[yi + ry][xi + rx][0] = battr;
+          lines[yi + ry][xi + 0][0] = battr;
         }
-        lines[yi + ry][xi + rx][1] = '\u2502'; // '│'
-        lines[yi + ry].dirty = true;
-      } else {
-        rx++;
+        lines[yi + ry][xi + 0][1] = '\u2502'; // '│'
       }
-    });
-    rx = 1;
-    self._maxes.forEach(function(max) {
-      while (max--) {
-        if (ry % 2 === 0) {
-          if (!lines[yi + ry]) break;
-          if (!lines[yi + ry][xi + rx + 1]) break;
+
+      // 5. DRAW CONTENT ROW MIDDLE NON-INTERSECTION VERTICAL LINE CHARACTERS
+      rx = 0;
+      self._maxes.forEach(function(max, i) {
+        rx += max + 1;
+        var isLastColumn = i === self._maxes.length - 1;
+        if ( !(isLastColumn && !self.options.tableBorderFlags.rightBorder) ) {
+          if (!lines[yi + ry][xi + rx]) return;
           if (self.options.fillCellBorders) {
             var lbg = (ry <= 2 ? hattr : cattr) & 0x1ff;
             lines[yi + ry][xi + rx][0] = (battr & ~0x1ff) | lbg;
           } else {
             lines[yi + ry][xi + rx][0] = battr;
           }
-          lines[yi + ry][xi + rx][1] = '\u2500'; // '─'
-          lines[yi + ry].dirty = true;
+          lines[yi + ry][xi + rx][1] = '\u2502'; // '│'
         }
-        rx++;
-      }
-      rx++;
-    });
+      });
+
+      // 6. MOVE DOWN FOR NEXT CONTENT ROW
+      lines[yi + ry].dirty = true;
+      ry++;
+    }
+
   }
 
   return coords;
