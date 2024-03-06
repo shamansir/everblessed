@@ -72,20 +72,17 @@ Form.prototype.__proto__ = Box.prototype;
 Form.prototype.type = 'form';
 
 Form.prototype._refresh = function() {
-  // XXX Possibly remove this if statement and refresh on every focus.
-  // Also potentially only include *visible* focusable elements.
+  // Potentially only include *visible* focusable elements.
   // This would remove the need to check for _selected.visible in previous()
   // and next().
-  if (!this._children) {
-    var out = [];
+  var out = [];
 
-    this.children.forEach(function fn(el) {
-      if (el.keyable) out.push(el);
-      el.children.forEach(fn);
-    });
+  this.children.forEach(function fn(el) {
+    if (el.keyable) out.push(el);
+    el.children.forEach(fn);
+  });
 
-    this._children = out;
-  }
+  this._children = out;
 };
 
 Form.prototype._visible = function() {
