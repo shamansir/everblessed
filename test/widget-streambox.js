@@ -1,4 +1,4 @@
-var blessed = require('../src/lib/reblessed')
+var blessed = require('../src/lib/everblessed')
   , screen;
 const { read } = require('fs');
 const Stream = require("stream");

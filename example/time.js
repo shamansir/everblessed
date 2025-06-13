@@ -19,7 +19,7 @@ if (~argv.indexOf('-h') || ~argv.indexOf('--help')) {
   return process.exit(0);
 }
 
-var blessed = require('../dist/lib/reblessed');
+var blessed = require('../dist/lib/everblessed');
 
 var screen = blessed.screen({
   autoPadding: true

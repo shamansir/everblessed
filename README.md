@@ -22,13 +22,13 @@ Blessed is a fantastic project, so I revived this masterpiece from the dead unde
 ### Latest release
 
 ``` bash
-npm install reblessed
+npm install everblessed
 ```
 
 ### Latest source code
 
 ``` bash
-git clone git@github.com:kenan238/reblessed.git
+git clone git@github.com:shamansir/everblessed.git
 ```
 
 ## Example
@@ -41,17 +41,17 @@ perfectly centered horizontally and vertically.
 or when manipulating lines.
 
 ``` js
-const reblessed = require('reblessed');
+const everblessed = require('everblessed');
 
 // Create a screen object.
-const screen = reblessed.screen({
+const screen = everblessed.screen({
   smartCSR: true
 });
 
 screen.title = 'my window title';
 
 // Create a box perfectly centered horizontally and vertically.
-const box = reblessed.box({
+const box = everblessed.box({
     top: 'center',
     left: 'center',
     width: '50%',
@@ -77,7 +77,7 @@ const box = reblessed.box({
 screen.append(box);
 
 // Add a png icon to the box
-const icon = reblessed.image({
+const icon = everblessed.image({
     parent: box,
     top: 0,
     left: 0,

@@ -1,4 +1,4 @@
-var blessed = require('../src/lib/reblessed')
+var blessed = require('../src/lib/everblessed')
   , screen;
 
 screen = blessed.screen({
@@ -91,4 +91,3 @@ screen.key('q', function() {
 });
 
 screen.render();
-

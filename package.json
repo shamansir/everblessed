@@ -1,16 +1,16 @@
 {
-  "name": "reblessed",
+  "name": "everblessed",
   "description": "A high-level terminal interface library for node.js.",
   "author": "Christopher Jeffrey / kenan238",
   "version": "0.2.1",
   "license": "MIT",
-  "main": "./dist/lib/reblessed.js",
+  "main": "./dist/lib/everblessed.js",
   "bin": "./bin/tput.js",
   "preferGlobal": false,
-  "repository": "git://github.com/kenan238/reblessed.git",
-  "homepage": "https://github.com/kenan238/reblessed.git",
+  "repository": "git://github.com/shamansir/everblessed.git",
+  "homepage": "https://github.com/shamansir/everblessed.git",
   "bugs": {
-    "url": "https://github.com/kenan238/reblessed.git"
+    "url": "https://github.com/shamansir/everblessed.git"
   },
   "keywords": [
     "blessed",

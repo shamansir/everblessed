@@ -12,7 +12,7 @@ process.title = 'blessed-telnet';
 
 var fs = require('fs');
 var path = require('path');
-var blessed = require('reblessed');
+var blessed = require('everblessed');
 var telnet = require('telnet2');
 
 var server = telnet({ tty: true }, function(client) {
