@@ -2,4 +2,4 @@
  * Expose the library
  */
 
-module.exports = require("./src/lib/everblessed");
+module.exports = require("./src/lib/reblessed");

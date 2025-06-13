@@ -5,7 +5,7 @@
  * https://github.com/chjj/blessed
  */
 
-var blessed = require('../../dist/lib/everblessed')
+var blessed = require('../../dist/lib/reblessed')
   , request = require('request')
   , singlebyte = require('./singlebyte')
   , fs = require('fs');
