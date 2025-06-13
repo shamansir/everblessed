@@ -8,7 +8,7 @@
     "target": "ES6",
     "module": "CommonJS",
     // Generate d.ts files
-    "declaration": false,
+    "declaration": true,
     "outDir": "dist",
     "declarationMap": false
   }

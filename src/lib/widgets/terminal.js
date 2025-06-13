@@ -13,7 +13,7 @@ var nextTick = global.setImmediate || process.nextTick.bind(process);
 var Node = require('./node');
 var Box = require('./box');
 
-var nodePTY = require('node-pty');
+var nodePTY = require('@lydell/node-pty');
 
 /**
  * Terminal
