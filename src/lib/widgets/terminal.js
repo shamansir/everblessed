@@ -13,6 +13,8 @@ var nextTick = global.setImmediate || process.nextTick.bind(process);
 var Node = require('./node');
 var Box = require('./box');
 
+var nodePTY = require('node-pty');
+
 /**
  * Terminal
  */
@@ -215,7 +217,7 @@ Terminal.prototype.bootstrap = function() {
     return;
   }
 
-  this.pty = require('pty.js').fork(this.shell, this.args, {
+  this.pty = nodePTY.fork(this.shell, this.args, {
     name: this.termName,
     cols: this.width - this.iwidth,
     rows: this.height - this.iheight,
